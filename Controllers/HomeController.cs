@@ -23,6 +23,15 @@ namespace Minhalabcompras.Controllers
             return View();
         }
 
+        public IActionResult MeuLayout()
+        {
+            return View();
+        }
+
+        public IActionResult Conceito()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
