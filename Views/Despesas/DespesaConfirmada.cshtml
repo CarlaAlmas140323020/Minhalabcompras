@@ -1,0 +1,17 @@
+﻿@model Minhalabcompras.Models.Despesa
+@{
+    ViewData["Title"] = "Compras - Despesa Confirmada";
+}
+
+<card class="card">
+    <div class="card-body bg-light">
+        <h1 class="bg-info">Nova Despesa Criada</h1>
+        <p><strong>Nome:</strong> @Model.NomeDespesa</p>
+        <p><strong>Quantidade:</strong> @Model.Quantidade</p>
+        <p><strong>Valor:</strong> @Model.Valor</p>
+        <p><strong>Categoria:</strong> @Model.Categoria</p>
+        <p><strong>Pago:</strong> @Model.Pago</p>
+    </div>
+</card>
+<br />
+<a href="/Home/Index">Página Principal</a>

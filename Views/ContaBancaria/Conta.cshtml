@@ -1,0 +1,23 @@
+﻿@model Minhalabcompras.Models.ContaBancariaModel.ContaBancaria
+@{
+    ViewData["Title"] = "Conta Bancária";
+}
+
+<h3 class="alert-primary">Conta Bancária</h3>
+<br />
+<form asp-action="NovaContaBancaria" asp-controller="ContaBancaria" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="NomeDoTitular">Nome do Titular</label>
+        <input asp-for="NomeDoTitular" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Saldo">Saldo</label>
+        <input asp-for="Saldo" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Ativa">Ativa</label>
+        <input type="checkbox" asp-for="Ativa" />
+    </div>
+    <button class="btn-success" asp-controller="ContaBancaria" asp-action="NovaContaBancaria" type="submit">Adicionar Nova Conta Bancária</button>
+</form>

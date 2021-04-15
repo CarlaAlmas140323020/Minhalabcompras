@@ -1,40 +1,37 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Minhalabcompras.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Minhalabcompras.Models.ContaBancariaModel;
 
 namespace Minhalabcompras.Controllers
 {
-    public class DespesasController : Controller
+    public class ContaBancariaController : Controller
     {
-       
-        public IActionResult Despesa()
+        public IActionResult Conta()
         {
             return View();
         }
-       
-
 
         [HttpGet]
-        public IActionResult NovaDespesa()
+        public IActionResult NovaContaBancaria()
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult NovaDespesa(Despesa NovaDespesa)
-        {
-            if (ModelState.IsValid) { 
 
-            return View("DespesaConfirmada", NovaDespesa);
+        [HttpPost]
+        public IActionResult NovaContaBancaria(ContaBancaria NovaContaBancaria )
+        {
+            if (ModelState.IsValid)
+            {
+                return View("NovaConta", NovaContaBancaria);
             }
             else
             {
                 return View();
             }
-        }
 
-        
+        }
     }
 }
