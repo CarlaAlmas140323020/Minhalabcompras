@@ -10,7 +10,17 @@
         <p><strong>Quantidade:</strong> @Model.Quantidade</p>
         <p><strong>Valor:</strong> @Model.Valor</p>
         <p><strong>Categoria:</strong> @Model.Categoria</p>
-        <p><strong>Pago:</strong> @Model.Pago</p>
+        <p>
+            <strong>Pago:</strong>
+            @if (Model.Pago == true)
+            {
+                @:Sim
+            }
+            else
+            {
+                @:Não
+            }
+        </p>
     </div>
 </card>
 <br />

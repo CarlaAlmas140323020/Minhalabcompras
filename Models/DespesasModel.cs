@@ -16,7 +16,7 @@ namespace Minhalabcompras.Models
         public int Quantidade { get; set; }
 
         [Required(ErrorMessage = "Por favor introduza o Valor")]
-        public double Valor { get; set; }
+        public double? Valor { get; set; }
 
         public string Categoria { get; set; }
 

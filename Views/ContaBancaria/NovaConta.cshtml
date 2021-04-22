@@ -9,7 +9,17 @@
         <h1 class="alert-danger">Nova Conta Bancária Criada</h1>
         <p><strong>Nome do Titular:</strong> @Model.NomeDoTitular</p>
         <p><strong>Saldo:</strong> @Model.Saldo</p>
-        <p><strong>Conta Ativa:</strong> @Model.Ativa</p>
+        <p>
+            <strong>Conta Ativa:</strong>
+            @if (Model.Ativa == true)
+            {
+                @:Sim
+            }
+            else
+            {
+                @:Não
+            }
+        </p>
     </div>
 </card>
 <br />
