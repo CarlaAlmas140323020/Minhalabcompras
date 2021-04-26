@@ -1,0 +1,38 @@
+﻿@model Minhalabcompras.Models.Produto
+@{
+    ViewData["Title"] = "Novo Produto";
+}
+
+<h2>Novo Produto</h2>
+<br />
+<form asp-action="NovoProduto" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="ID">ID</label>
+        <input asp-for="ID" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Nome">Nome</label>
+        <input asp-for="Nome" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Categoria">Categoria</label>
+        <select asp-for="Categoria">
+            <option value="TV">TV</option>
+            <option value="Roupa">Roupa</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Casa">Casa</option>
+            <option value="Mobile">Mobile</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Preco">Preco</label>
+        <input asp-for="Preco" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EmStock">Em Stock</label>
+        <input type="checkbox" asp-for="EmStock" />
+    </div>
+
+    <button class="btn-success" asp-controller="Produtos" asp-action="NovoProduto" type="submit">Adicionar Produto</button>
+</form>
