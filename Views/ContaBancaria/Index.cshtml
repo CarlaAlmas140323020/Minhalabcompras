@@ -1,0 +1,36 @@
+﻿
+@{      ViewData["Title"] = "Contas Bancárias Criadas";
+}
+@model List<ContaBancaria>
+
+<div class="text-center">
+    @if (Model.Count == 0)
+    {
+    <h1>Sem Contas Bancárias Criadas</h1>
+    }
+    else
+    {
+    <h2>Produtos</h2>
+
+    @foreach(ContaBancaria c in Model)
+    {
+    <div class="card bg-light mb-3">
+        <div class="card-body">
+            <strog>Nome Do Titular:</strog>@c.NomeDoTitular
+            <strong>Saldo:</strong>@c.Saldo
+            <strong>Ativa:</strong>
+            @if(@c.Ativa==true)
+            {
+            @:Sim
+            }
+            else
+            {
+            @:Não
+            }
+        </div>
+    </div>
+    }
+    }
+    
+</div>
+<a asp-action="Conta" asp-controller="ContaBancaria" class="btn-primary">Adicionar Conta <i class="glyphicon glyphicon-plus"></i></a>

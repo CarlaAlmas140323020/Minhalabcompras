@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace Minhalabcompras.Models
 {
-    public class ContaBancariaModel : Controller
-    {
-
+  
         public class ContaBancaria
         {
             [Required(ErrorMessage = "Por favor introduza o seu nome")]
@@ -21,4 +19,4 @@ namespace Minhalabcompras.Models
             public bool Ativa { get; set; }
         }
     }
-}
+

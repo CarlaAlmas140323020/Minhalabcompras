@@ -1,14 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Minhalabcompras.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static Minhalabcompras.Models.ContaBancariaModel;
 
 namespace Minhalabcompras.Controllers
 {
     public class ContaBancariaController : Controller
     {
+        public IActionResult Index()
+        {
+            List<ContaBancaria> MinhasContas = Repositorio.Contas;
+            return View(MinhasContas);
+
+        }
         public IActionResult Conta()
         {
             return View();
@@ -21,11 +27,12 @@ namespace Minhalabcompras.Controllers
         }
 
         [HttpPost]
-        public IActionResult NovaContaBancaria(ContaBancaria NovaContaBancaria )
+        public IActionResult NovaContaBancaria(ContaBancaria MinhaNovaContaBancaria)
         {
             if (ModelState.IsValid)
             {
-                return View("NovaConta", NovaContaBancaria);
+                 Repositorio.AddContaBancaria(MinhaNovaContaBancaria);
+                return View("NovaConta", MinhaNovaContaBancaria);
             }
             else
             {
@@ -33,5 +40,6 @@ namespace Minhalabcompras.Controllers
             }
 
         }
+   
     }
 }

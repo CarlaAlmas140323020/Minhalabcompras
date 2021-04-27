@@ -20,5 +20,23 @@ namespace Minhalabcompras.Models
         {
             produtos.Add(NovoProduto);
         }
+
+
+        private static List<ContaBancaria> conta = new List<ContaBancaria>();
+
+        public static List<ContaBancaria> Contas
+        {
+            get
+            {
+                return conta;
+            }
+        }
+        public static void AddContaBancaria(ContaBancaria NovaContaBancaria)
+        {
+            conta.Add(NovaContaBancaria);
+
+        }
+
     }
-}
+    }
+
