@@ -2,16 +2,24 @@
 @{
     ViewData["Title"] = "Compras - Despesa Confirmada";
 }
+<h1 class="border-dark">Nova Despesa Criada</h1>
+<table class="table bg-secondary">
+    <thead>
+        <tr>
+            <th><strong>Nome:</strong></th>
+            <th><strong>Quantidade:</strong></th>
+            <th><strong>Valor:</strong></th>
+            <th><strong>Categoria:</strong></th>
+            <th><strong>Pago:</strong></th>
+        </tr>
+    </thead>
+    <tr>
+        <th> @Model.NomeDespesa</th>
+        <th>@Model.Quantidade</th>
+        <th>@Model.Valor</th>
+        <th>@Model.Categoria</th>
+        <th>
 
-<card class="card">
-    <div class="card-body bg-light">
-        <h1 class="bg-info">Nova Despesa Criada</h1>
-        <p><strong>Nome:</strong> @Model.NomeDespesa</p>
-        <p><strong>Quantidade:</strong> @Model.Quantidade</p>
-        <p><strong>Valor:</strong> @Model.Valor</p>
-        <p><strong>Categoria:</strong> @Model.Categoria</p>
-        <p>
-            <strong>Pago:</strong>
             @if (Model.Pago == true)
             {
                 @:Sim
@@ -20,8 +28,9 @@
             {
                 @:Não
             }
-        </p>
-    </div>
-</card>
+        </th>
+    </tr>
+    </table>
+
 <br />
 <a href="/Home/Index">Página Principal</a>

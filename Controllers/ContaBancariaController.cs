@@ -40,6 +40,12 @@ namespace Minhalabcompras.Controllers
             }
 
         }
+
+        public IActionResult RemoverContaBancaria(ContaBancaria MinhaNovaContaBancaria)
+        {
+            Repositorio.Contas.Clear();
+            return View("SemContasBancarias", MinhaNovaContaBancaria);
+        }
    
     }
 }

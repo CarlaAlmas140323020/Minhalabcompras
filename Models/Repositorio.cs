@@ -37,6 +37,11 @@ namespace Minhalabcompras.Models
 
         }
 
+        public static void EliminarContaBancaria(ContaBancaria NovaContaBancaria)
+        {
+            Repositorio.Contas.Clear();
+        }
+
     }
     }
 
