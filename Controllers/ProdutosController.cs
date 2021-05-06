@@ -36,5 +36,10 @@ namespace Minhalabcompras.Controllers
             }
         }
 
+        public IActionResult EliminarProdutos(Produto MeuNovoProduto)
+        {
+            Repositorio.EliminarProdutos(MeuNovoProduto);
+            return View("ProdutosEliminados", MeuNovoProduto);
+        }
     }
 }

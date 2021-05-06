@@ -1,0 +1,10 @@
+﻿@model Minhalabcompras.Models.WeatherApiResponse
+@{
+    ViewData["Title"] = "Tempo";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div><img src="@Model.Current.WeatherIcons[0]"/></div>
+<br/>
+<p><strong>País:</strong> @Model.Location.Country    <strong>Cidade:</strong> @Model.Location.Name</p>
+<p><strong>Temperatura:</strong>Estão @Model.Current.Temperature Graus</p>

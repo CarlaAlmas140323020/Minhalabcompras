@@ -21,6 +21,10 @@ namespace Minhalabcompras.Models
             produtos.Add(NovoProduto);
         }
 
+        public static void EliminarProdutos(Produto NovoProduto)
+        {
+            Repositorio.Produtos.Clear();
+        }
 
         private static List<ContaBancaria> conta = new List<ContaBancaria>();
 
