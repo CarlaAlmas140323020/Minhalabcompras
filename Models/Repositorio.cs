@@ -1,6 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient.Memcached;
+using MySqlX.XDevAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Minhalabcompras.Models
@@ -45,6 +48,8 @@ namespace Minhalabcompras.Models
         {
             Repositorio.Contas.Clear();
         }
+
+     
 
     }
     }

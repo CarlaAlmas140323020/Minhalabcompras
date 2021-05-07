@@ -4,7 +4,19 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<div><img src="@Model.Current.WeatherIcons[0]"/></div>
-<br/>
+<div><img src="@Model.Current.WeatherIcons[0]" /></div>
+<br />
 <p><strong>País:</strong> @Model.Location.Country    <strong>Cidade:</strong> @Model.Location.Name</p>
 <p><strong>Temperatura:</strong>Estão @Model.Current.Temperature Graus</p>
+
+<br />
+<p><strong>Data e Hora: </strong>@Model.Location.Localtime</p>
+<br />
+<form asp-action="Tempo" method="post">
+    
+        <label asp-for="Location.Name">Localidade</label>
+        <input asp-for="Location.Name" />
+    
+    <button class="alert" asp-action="Tempo" asp-controller="Home">Ver tempo</button>
+</form>
+

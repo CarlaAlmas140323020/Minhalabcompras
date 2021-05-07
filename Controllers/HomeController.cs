@@ -9,13 +9,18 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
+using MySql.Data.MySqlClient.Memcached;
+using MySqlX.XDevAPI;
+using VisioForge.MediaFramework.DSP;
+
 
 namespace Minhalabcompras.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+       
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -45,17 +50,20 @@ namespace Minhalabcompras.Controllers
             //criar e configurar o cliente HTTP
             string baseAddress = "http://api.weatherstack.com/";
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(baseAddress);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new
-            MediaTypeWithQualityHeaderValue("application/json"));
+            HttpClient cliente = new HttpClient();
+            cliente.BaseAddress = new Uri(baseAddress);
+            cliente.DefaultRequestHeaders.Accept.Clear();
+            cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string path = "current?access_key=08d9721c9f4a140a938f7325c3402e41&query=Almada";
-            HttpResponseMessage response = client.GetAsync(path).Result;
+            HttpResponseMessage response = cliente.GetAsync(path).Result;
             string myJsonResponse = await response.Content.ReadAsStringAsync();
             WeatherApiResponse apiResponse = JsonConvert.DeserializeObject<WeatherApiResponse>(myJsonResponse);
             return View(apiResponse);
         }
+
+
+       
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
