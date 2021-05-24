@@ -10,25 +10,30 @@ namespace Minhalabcompras.Models
     public class MyHTTPClient
     {
         private static string baseAddress = "http://api.weatherstack.com/";
-        private static HttpClient client;
+        private static HttpClient cliente;
 
-        public static HttpClient cliente
+        public static HttpClient clientes
         {
             get
             {
-                if (client == null)
+                if (cliente == null)
                 {
-                    client = new HttpClient();
-                    client.BaseAddress = new Uri(baseAddress);
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new
+                    cliente = new HttpClient();
+                    cliente.BaseAddress = new Uri(baseAddress);
+                    cliente.DefaultRequestHeaders.Accept.Clear();
+                    cliente.DefaultRequestHeaders.Accept.Add(new
                     MediaTypeWithQualityHeaderValue("application/json"));
                 }
-                return client;
+                return cliente;
             }
+        }
 
+        internal static object GetAsync(string path)
+        {
+            throw new NotImplementedException();
         }
     }
-}
+    }
+
 
 

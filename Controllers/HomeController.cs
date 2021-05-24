@@ -45,29 +45,55 @@ namespace Minhalabcompras.Controllers
             return View();
         }
 
+        [HttpGet]
         public async Task<IActionResult> Tempo()
         {
-            //criar e configurar o cliente HTTP
-            string baseAddress = "http://api.weatherstack.com/";
+          //criar e configurar o cliente HTTP
+             string baseAddress = "http://api.weatherstack.com/";
 
             HttpClient cliente = new HttpClient();
-            cliente.BaseAddress = new Uri(baseAddress);
+             cliente.BaseAddress = new Uri(baseAddress);
             cliente.DefaultRequestHeaders.Accept.Clear();
-            cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            string path = "current?access_key=08d9721c9f4a140a938f7325c3402e41&query=Almada";
-            HttpResponseMessage response = cliente.GetAsync(path).Result;
+             cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+              string path = "current?access_key=08d9721c9f4a140a938f7325c3402e41&query=Almada";
+              HttpResponseMessage response = cliente.GetAsync(path).Result;
+              string myJsonResponse = await response.Content.ReadAsStringAsync();
+             WeatherApiResponse apiResponse = JsonConvert.DeserializeObject<WeatherApiResponse>(myJsonResponse);
+               return View(apiResponse);
+       
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Tempo(WeatherApiResponse objCidade)
+        {
+            string cidade = objCidade.Location.Name;
+            string path = "current?access_key=08d9721c9f4a140a938f7325c3402e41&query="+cidade;
+            HttpResponseMessage response = MyHTTPClient.clientes.GetAsync(path).Result;
             string myJsonResponse = await response.Content.ReadAsStringAsync();
             WeatherApiResponse apiResponse = JsonConvert.DeserializeObject<WeatherApiResponse>(myJsonResponse);
             return View(apiResponse);
         }
 
+        public IActionResult NovaContaBancaria(ContaBancaria MinhaNovaContaBancaria)
+        {
+            if (ModelState.IsValid)
+            {
+                Repositorio.AddContaBancaria(MinhaNovaContaBancaria);
+                return View("NovaConta", MinhaNovaContaBancaria);
+            }
+            else
+            {
+                return View();
+            }
 
-       
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+      
     }
 }
