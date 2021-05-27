@@ -4,29 +4,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Minhalabcompras.Models
 {
     public static class Repositorio
     {
-        private static List<Produto> produtos = new List<Produto>();
-
-        public static List<Produto> Produtos
+        private static List<Produto> Produtos
         {
             get
             {
-                return produtos;
+       LabComprasDbContext context = new LabComprasDbContext();
+        List<Produto> produtos = context.Produtos.ToList();
+        return produtos;
             }
         }
+
         public static void AddProduto(Produto NovoProduto)
         {
-            produtos.Add(NovoProduto);
+        LabComprasDbContext context = new LabComprasDbContext();
+            context.SaveChanges();
         }
 
         public static void EliminarProdutos(Produto NovoProduto)
         {
-            Repositorio.Produtos.Clear();
+            LabComprasDbContext context = new LabComprasDbContext();
+            context.Produtos.c();
         }
 
         private static List<ContaBancaria> conta = new List<ContaBancaria>();
